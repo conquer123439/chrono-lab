@@ -6,13 +6,37 @@ You are a time researcher trapped in a sealed laboratory. You cannot reach every
 yourself, so you record your own movement, rewind time, and let your echo hold the controls you
 cannot hold at the same time.
 
+## Play online
+
+[Play Chrono Lab](https://liuyinghui15-cpu.github.io/chrono-lab/) in a desktop browser with a
+keyboard and mouse. The shared GitHub Pages site opens without a GitHub login.
+
 ## Run locally
 
-1. Double-click `start_game.bat` (Windows). It starts a no-cache local server and opens the game.
-2. Keep the command window open while playing; close it to stop the server.
-3. Click **START EXPERIMENT** on the title screen, then use the keyboard.
+You need Python 3 and a browser with WebGL support. Check Python with `python --version` or,
+on Windows, `py --version`. The game uses local JavaScript modules and does not require an npm
+install, a build command, or an online backend.
 
-Manual alternative: `python serve.py` from this folder, then open `http://127.0.0.1:5173/`.
+If you already have a local clone, open its root folder. For a first checkout:
+
+```powershell
+git clone https://github.com/liuyinghui15-cpu/chrono-lab.git
+cd chrono-lab
+```
+
+On Windows, double-click `start_game.bat`. It finds `python` or `py`, starts a no-cache local
+server, and opens the game. Keep the command window open while playing; close it to stop the
+server. Click **START EXPERIMENT** on the title screen.
+
+To start the same server manually, run this from the folder containing `index.html` and `serve.py`:
+
+```powershell
+python serve.py
+```
+
+If Windows provides only the `py` launcher, use `py serve.py`. Open
+`http://127.0.0.1:5173/` if the browser does not open automatically. Press `Ctrl+C` in the
+terminal to stop the manually started server.
 
 Do **not** double-click `index.html`. Browsers block ES module loading from `file://`, so the page
 shows a "需要本地服务器" notice instead of starting. If port 5173 is already in use, an earlier
@@ -20,6 +44,29 @@ server is still running: close that old command window first.
 
 The server sends `Cache-Control: no-store`, so an ordinary refresh always loads the current files.
 Three.js is stored locally under `src/vendor/`, so the game needs no CDN or network access.
+
+## Publishing
+
+The team publishes one shared site from this repository's `main` branch using GitHub Pages.
+In **Settings → Pages → Build and deployment**, the source is **Deploy from a branch**,
+the branch is **main**, and the folder is **/ (root)**.
+
+Keep `index.html`, `src/`, and `src/vendor/` in their existing relative locations. The site is
+served under `/chrono-lab/`, so page assets must retain paths such as `./src/main.js` and
+JavaScript modules must retain their relative imports. Python is only a local file server;
+GitHub Pages serves the HTML, CSS, JavaScript, and local Three.js files directly.
+
+To publish an update:
+
+1. Make changes on a working branch and open a PR targeting this repository's `main`.
+2. Have a teammate review the PR, address the feedback, and merge when the publisher judges it ready.
+3. Open [Actions](https://github.com/liuyinghui15-cpu/chrono-lab/actions) and inspect the
+   **pages build and deployment** run for the merged commit. Check its result before using the
+   updated site.
+4. Open the shared playable URL and check the affected behavior. For the final group submission,
+   each member must also complete the assignment's personal verification.
+
+Team members contribute through their branches and forks; they use the shared playable URL above.
 
 ## Controls
 
