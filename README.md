@@ -71,6 +71,57 @@ There is also a very quiet low-passed ambient hum. Audio starts on the first cli
 browsers do not allow an `AudioContext` before a user gesture. The sound module attaches to the
 `window.CHRONO_EVENTS` hooks that the level already fires, so it never touches puzzle logic.
 
+## CI/CD exploration
+
+> **NO AI — member C writes and confirms this note.** The fields below are intentionally left for the team’s own observation of one real deployment. Do not treat a successful deployment as proof that gameplay is correct.
+
+- Checked deployment link / source commit:
+- Trigger:
+- Actual steps / published files:
+- Result or blocker:
+- Automatic part / manual part:
+- One check that actually ran (write `none` if none):
+- One useful missing check I identified:
+- All-member review/confirmation:
+
+## Assets & credits
+
+### Third-party library
+
+- The runtime uses a local Three.js vendor build in `src/vendor/three.core.js` and `src/vendor/three.module.js` rather than loading Three.js from a CDN.
+- The checked-in vendor files retain the upstream header identifying **Three.js Authors**, copyright 2010–2025, SPDX license identifier **MIT**, and revision `180`.
+- The project metadata declares the Three.js dependency as version `0.180.0` in `package.json`. Upstream source and licensing information: [Three.js repository](https://github.com/mrdoob/three.js/tree/r180) and [Three.js MIT license](https://github.com/mrdoob/three.js/blob/r180/LICENSE).
+
+### Project-generated visuals and sound
+
+- The game’s laboratory, character, puzzle objects, lights, and effects are generated at runtime from Three.js geometry and materials in `src/scene.js`, `src/player.js`, and `src/level.js`.
+- Text labels are generated in the browser with canvas elements and `CanvasTexture`; no external image texture files are used by the project code.
+- Sound is generated at runtime with the Web Audio API in `src/audio.js` using oscillators, gain envelopes, and a generated ambient buffer; no external audio files are loaded.
+
+### External asset check
+
+The current repository tree contains no separate image, audio, model, or font asset files. The local vendor library and its retained license notice are the only third-party runtime files identified in this source review.
+
+## Contributors
+
+> Each member must enter their own public name or handle and confirm their actual contribution. Do not infer these entries from the Week 05 or Week 07 task split.
+
+| Public name or handle | Actual contribution confirmed by that member |
+|---|---|
+|  |  |
+|  |  |
+|  |  |
+
+## AI assistance
+
+> Each member fills only their own material AI assistance and disclosure. Keep this structure until the members provide and confirm their own facts.
+
+| Member / public handle | Material AI assistance and purpose | Member’s disclosure / confirmation |
+|---|---|---|
+|  |  |  |
+|  |  |  |
+|  |  |  |
+
 ## Project structure
 
 ```text
