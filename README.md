@@ -81,8 +81,8 @@ browsers do not allow an `AudioContext` before a user gesture. The sound module 
 - Result or blocker: The run completed successfully. The run showed a Node.js 20 deprecation warning. It did not prove that gameplay was correct.
 - Automatic part / manual part: GitHub Actions built and deployed the site automatically; opening the site and checking gameplay, sound, and mute remained manual.
 - One check that actually ran: The Pages build and deployment jobs ran successfully; no project-specific gameplay test was shown in this run.
-- One useful missing check I identified：no
-- All-member review/confirmation:yes
+- One useful missing check I identified：没有看到该次运行执行项目专用的游戏检查，这可能会导致该游戏因为某些原因无法运行
+- All-member review/confirmation:no
 
 ## Assets & credits
 
