@@ -1,0 +1,12 @@
+node_modules/
+__pycache__/
+*.py[cod]
+.env
+.env.*
+!.env.example
+.DS_Store
+Thumbs.db
+screenshots/
+MEMBER_*_LOG.md
+W07_Group*.md
+W07_Group*.pdf
