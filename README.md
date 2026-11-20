@@ -75,13 +75,13 @@ browsers do not allow an `AudioContext` before a user gesture. The sound module 
 
 > **NO AI — member C writes and confirms this note.** The fields below are intentionally left for the team’s own observation of one real deployment. Do not treat a successful deployment as proof that gameplay is correct.
 
-- Checked deployment link / source commit:
-- Trigger:
-- Actual steps / published files:
-- Result or blocker:
-- Automatic part / manual part:
-- One check that actually ran (write `none` if none):
-- One useful missing check I identified:
+- Checked deployment link / source commit: Actions run 44688772904；source commit ee51a5f01d1911cad91e75956f6df3ecb137564b；published site https://liuyinghui15-cpu.github.io/chrono-lab/
+- Trigger: GitHub Pages deployment for the main branch.
+- Actual steps / published files: Checkout, Build with Jekyll, Upload artifact, and Deploy to GitHub Pages; the published project is the root index.html and its src files.
+- Result or blocker: The run completed successfully. The run showed a Node.js 20 deprecation warning. It did not prove that gameplay was correct.
+- Automatic part / manual part: GitHub Actions built and deployed the site automatically; opening the site and checking gameplay, sound, and mute remained manual.
+- One check that actually ran: The Pages build and deployment jobs ran successfully; no project-specific gameplay test was shown in this run.
+- One useful missing check I identified：
 - All-member review/confirmation:
 
 ## Assets & credits
