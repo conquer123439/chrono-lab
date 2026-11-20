@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chrono Lab: Echoes of Time</title>
+    <link rel="stylesheet" href="./src/styles.css" />
+  </head>
+  <body>
+    <main id="game-root" aria-label="Chrono Lab 3D game"></main>
+    <section id="hud" aria-live="polite">
+      <div class="hud-top"><strong>CHRONO <em>LAB</em></strong><span id="loop-status">Starting loop…</span><button id="restart" type="button">RESTART</button></div>
+      <div class="objective"><small>CURRENT OBJECTIVE</small><span id="level-status">Loading puzzle…</span></div>
+      <div class="controls">W A S D <span>MOVE</span>　 SPACE <span>JUMP</span>　 R <span>REWIND</span>　 E <span>INTERACT</span></div>
+    </section>
+
+    <div id="menu" class="overlay">
+      <div class="menu-card">
+        <p class="eyebrow">TEMPORAL RESEARCH FACILITY / 01</p>
+        <h1>CHRONO <em>LAB</em></h1>
+        <p class="subtitle">Your past is the key to your escape.</p>
+        <p>Record your path. Rewind. Work with your echo to unlock the laboratory.</p>
+        <div class="menu-actions">
+          <button id="start" type="button">START EXPERIMENT <span>→</span></button>
+          <button id="demo" type="button" class="secondary">WATCH DEMO <span>▶</span></button>
+        </div>
+        <div class="menu-footer">
+          <button id="sound" type="button" class="toggle" aria-pressed="true">SOUND ON</button>
+          <p class="hint">WASD move · Space jump · R rewind · E interact</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="demo-banner" class="demo-banner" hidden>
+      <span class="demo-dot" aria-hidden="true"></span>
+      <span id="demo-text">Demo</span>
+      <button id="demo-skip" type="button">SKIP</button>
+    </div>
+
+    <script>
+      // ES modules cannot load from file://; explain instead of failing silently.
+      if (location.protocol === 'file:') {
+        window.addEventListener('DOMContentLoaded', function () {
+          var card = document.querySelector('.menu-card');
+          if (!card) return;
+          card.innerHTML =
+            '<p class="eyebrow">STARTUP BLOCKED</p>' +
+            '<h1>需要本地服务器</h1>' +
+            '<p>浏览器禁止用 <code>file://</code> 直接加载 ES 模块，游戏无法启动。</p>' +
+            '<p>请关闭本页，双击同一文件夹里的 <strong>start_game.bat</strong>，' +
+            '用它自动打开的 http://127.0.0.1:5173 进入游戏。</p>';
+        });
+      }
+    </script>
+    <script type="module" src="./src/main.js?v=5"></script>
+  </body>
+</html>

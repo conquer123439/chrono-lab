@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Chrono Lab demo smoke test</title>
+    <style>
+      body { font: 13px/1.5 Consolas, monospace; background: #050814; color: #d5faff; }
+      pre { padding: 1rem; white-space: pre-wrap; }
+    </style>
+  </head>
+  <body>
+    <iframe id="game" src="/" width="960" height="540" style="border: 1px solid #31566c"></iframe>
+    <pre id="out">PENDING</pre>
+    <script>
+      // Drives the real game through the real buttons, then reports each sample by
+      // requesting a URL the static server logs, so the run can be inspected after
+      // the browser has actually played in real time.
+      const out = document.getElementById('out');
+      const log = [];
+      const say = (line) => { log.push(line); out.textContent = log.join('\n'); };
+      const report = () => {
+        try { fetch('/__result?' + encodeURIComponent(log.join(' || '))).catch(() => {}); } catch (e) { /* logged server-side */ }
+      };
+      const frame = document.getElementById('game');
+
+      function sample(label, win, doc) {
+        const lab = win.chronoLab;
+        if (!lab) { say(label + ': chronoLab MISSING'); return; }
+        const p = lab.player.position;
+        say(label
+          + ' pos=(' + p.x.toFixed(2) + ',' + p.z.toFixed(2) + ')'
+          + ' clone=' + lab.hasClone
+          + ' rec=' + lab.recordingTime.toFixed(1)
+          + ' text="' + doc.querySelector('#demo-text').textContent + '"'
+          + ' bannerHidden=' + doc.querySelector('#demo-banner').hidden
+          + ' menuHidden=' + doc.querySelector('#menu').hidden
+          + ' events=' + Object.keys(win.CHRONO_EVENTS || {}).length);
+      }
+
+      function start() {
+        const win = frame.contentWindow;
+        const doc = frame.contentDocument;
+        if (!win.chronoLab) { setTimeout(start, 100); return; }
+
+        say('booted demoBtn=' + Boolean(doc.querySelector('#demo'))
+          + ' sound="' + doc.querySelector('#sound').textContent + '"'
+          + ' audioCtx=' + (typeof win.AudioContext));
+        sample('t=0', win, doc);
+
+        doc.querySelector('#demo').click();
+        say('clicked WATCH DEMO');
+        report();
+
+        [24, 27, 30, 33, 36].forEach((seconds) => {
+          setTimeout(() => {
+            try { sample('t=' + seconds, win, doc); }
+            catch (error) { say('t=' + seconds + ' ERROR ' + error.message); }
+            report();
+          }, seconds * 1000);
+        });
+      }
+
+      window.addEventListener('load', () => setTimeout(start, 500));
+    </script>
+  </body>
+</html>

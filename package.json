@@ -1,0 +1,13 @@
+{
+  "name": "chrono-lab-echoes-of-time",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "python -m http.server 5173",
+    "preview": "python -m http.server 5173"
+  },
+  "dependencies": {
+    "three": "0.180.0"
+  }
+}
