@@ -108,7 +108,7 @@ The current repository tree contains no separate image, audio, model, or font as
 
 | Public name or handle | Actual contribution confirmed by that member |
 |---|---|
-|  |  |
+| liuyinghui15-cpu | 我整理了文件 上传了文件 我创建了团队公开仓库 `chrono-lab`。我亲自在 GitHub 设置并开启了 Pages。我进行了初步试玩，确认游戏体验正常。我亲自撰写了对 B 的 PR #3 的审阅评论，记录了回溯、分身和核心收集的检查。我提供了回应 C 的原文，并独立判断自己的 PR #1 可以合并。 |
 |  |  |
 |  |  |
 
@@ -118,7 +118,7 @@ The current repository tree contains no separate image, audio, model, or font as
 
 | Member / public handle | Material AI assistance and purpose | Member’s disclosure / confirmation |
 |---|---|---|
-|  |  |  |
+| liuyinghui15-cpu | **README 修改、PR 创建和合并操作由 AI 协助执行** | 我确认记录 BC未知 |
 |  |  |  |
 |  |  |  |
 
