@@ -128,6 +128,57 @@ There is also a very quiet low-passed ambient hum. Audio starts on the first cli
 browsers do not allow an `AudioContext` before a user gesture. The sound module attaches to the
 `window.CHRONO_EVENTS` hooks that the level already fires, so it never touches puzzle logic.
 
+## CI/CD exploration
+
+> **NO AI — member C writes and confirms this note.** The fields below are intentionally left for the team’s own observation of one real deployment. Do not treat a successful deployment as proof that gameplay is correct.
+
+- Checked deployment link / source commit: Actions run 44688772904；source commit ee51a5f01d1911cad91e75956f6df3ecb137564b；published site https://liuyinghui15-cpu.github.io/chrono-lab/
+- Trigger: GitHub Pages deployment for the main branch.
+- Actual steps / published files: Checkout, Build with Jekyll, Upload artifact, and Deploy to GitHub Pages; the published project is the root index.html and its src files.
+- Result or blocker: The run completed successfully. The run showed a Node.js 20 deprecation warning. It did not prove that gameplay was correct.
+- Automatic part / manual part: GitHub Actions built and deployed the site automatically; opening the site and checking gameplay, sound, and mute remained manual.
+- One check that actually ran: The Pages build and deployment jobs ran successfully; no project-specific gameplay test was shown in this run.
+- One useful missing check I identified：没有看到该次运行执行项目专用的游戏检查，这可能会导致该游戏因为某些原因无法运行
+- All-member review/confirmation:A、B、C 已确认
+
+## Assets & credits
+
+### Third-party library
+
+- The runtime uses a local Three.js vendor build in `src/vendor/three.core.js` and `src/vendor/three.module.js` rather than loading Three.js from a CDN.
+- The checked-in vendor files retain the upstream header identifying **Three.js Authors**, copyright 2010–2025, SPDX license identifier **MIT**, and revision `180`.
+- The project metadata declares the Three.js dependency as version `0.180.0` in `package.json`. Upstream source and licensing information: [Three.js repository](https://github.com/mrdoob/three.js/tree/r180) and [Three.js MIT license](https://github.com/mrdoob/three.js/blob/r180/LICENSE).
+
+### Project-generated visuals and sound
+
+- The game’s laboratory, character, puzzle objects, lights, and effects are generated at runtime from Three.js geometry and materials in `src/scene.js`, `src/player.js`, and `src/level.js`.
+- Text labels are generated in the browser with canvas elements and `CanvasTexture`; no external image texture files are used by the project code.
+- Sound is generated at runtime with the Web Audio API in `src/audio.js` using oscillators, gain envelopes, and a generated ambient buffer; no external audio files are loaded.
+
+### External asset check
+
+The current repository tree contains no separate image, audio, model, or font asset files. The local vendor library and its retained license notice are the only third-party runtime files identified in this source review.
+
+## Contributors
+
+> Each member must enter their own public name or handle and confirm their actual contribution. Do not infer these entries from the Week 05 or Week 07 task split.
+
+| Public name or handle | Actual contribution confirmed by that member |
+|---|---|
+| liuyinghui15-cpu | 我整理了文件 上传了文件 我创建了团队公开仓库 `chrono-lab`。我亲自在 GitHub 设置并开启了 Pages。我进行了初步试玩，确认游戏体验正常。我亲自撰写了对 B 的 PR #3 的审阅评论，记录了回溯、分身和核心收集的检查。我提供了回应 C 的原文，并独立判断自己的 PR #1 可以合并。 |
+| qzezhou | fork 团队仓库并建 codex/w07-b-gameplay-docs 分支；改进 README 的 Game goal、Controls、The puzzle chain（PR #3，提交 5b12bb8，+25/−15 行，只动 README.md，经 A 审阅并合并，合并提交 f0c6d47）；审阅 PR #2 并留评论；回复 A 对我 PR 的审阅意见 |
+| conquer123439 | 我自己fork了chrono-lab的main分支；自己修改了README的章节；PR#2因为B的意见修改过一次。 |
+
+## AI assistance
+
+> Each member fills only their own material AI assistance and disclosure. Keep this structure until the members provide and confirm their own facts.
+
+| Member / public handle | Material AI assistance and purpose | Member’s disclosure / confirmation |
+|---|---|---|
+| liuyinghui15-cpu | **README 修改、PR 创建和合并操作由 AI 协助执行** | 我确认记录 BC未知 |
+| qzezhou | DSH 桌面端（DeepSeek 模型）辅助起草 README 的 Controls 与 The puzzle chain 文字、执行分支与提交的 Git 命令、运行 tools/jscheck.py、辅助分析 PR #2 的 diff | 本人确认：AI 起草的文字本人阅读后采纳；AI 执行并报告、本人阅读报告后确认的事项为 jscheck.py 7/7 通过、git diff 比对结论。未亲自验证的部分：PR #2 中 Three.js vendor 文件逐行内容、在线站点实际可玩性（仅 HTTP 200 技术检查，非游玩验证）。 |
+| conquer123439 | AI没有帮我检验网站，各种fork并没有帮我，他帮我执行git推送，和看actions日志，以及整理表格，和给我提示步骤。README的部分内容由AI给出草稿，CI/CD正文由我本人改写。 | B/C已确认 |
+
 ## Project structure
 
 ```text
