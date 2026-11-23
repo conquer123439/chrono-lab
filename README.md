@@ -175,7 +175,7 @@ The current repository tree contains no separate image, audio, model, or font as
 
 | Member / public handle | Material AI assistance and purpose | Member’s disclosure / confirmation |
 |---|---|---|
-| liuyinghui15-cpu | **README 修改、PR 创建和合并操作由 AI 协助执行** | 我确认记录 BC未知 |
+| liuyinghui15-cpu | **README 修改、PR 创建和合并操作由 AI 协助执行** | 我确认记录 |
 | qzezhou | DSH 桌面端（DeepSeek 模型）辅助起草 README 的 Controls 与 The puzzle chain 文字、执行分支与提交的 Git 命令、运行 tools/jscheck.py、辅助分析 PR #2 的 diff | 本人确认：AI 起草的文字本人阅读后采纳；AI 执行并报告、本人阅读报告后确认的事项为 jscheck.py 7/7 通过、git diff 比对结论。未亲自验证的部分：PR #2 中 Three.js vendor 文件逐行内容、在线站点实际可玩性（仅 HTTP 200 技术检查，非游玩验证）。 |
 | conquer123439 | AI没有帮我检验网站，各种fork并没有帮我，他帮我执行git推送，和看actions日志，以及整理表格，和给我提示步骤。README的部分内容由AI给出草稿，CI/CD正文由我本人改写。 | B/C已确认 |
 
